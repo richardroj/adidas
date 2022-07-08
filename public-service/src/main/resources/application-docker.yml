@@ -1,0 +1,30 @@
+server:
+  port: 9280
+
+# Spring Configuration
+spring:
+  cloud:
+    config:
+      enabled: false
+
+
+# Logging
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.security: INFO
+    org.springframework.cloud: INFO
+    org.springframework.cloud.sleuth: DEBUG
+    com.netflix.eureka: OFF
+    com.netflix.discovery: INFO
+    com.qiagen: DEBUG
+
+# Discovery Server
+eureka:
+  instance:
+    prefer-ip-address: true # Register the IP of the service rather than the server name
+  client:
+    register-with-eureka: false
+    fetch-registry: false # Pull down a local copy of the registry
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://naming-server:9061/eureka}

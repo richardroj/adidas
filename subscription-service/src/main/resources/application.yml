@@ -1,0 +1,28 @@
+# Data properties
+domain:
+  datasource:
+    driver-class: com.mysql.jdbc.Driver
+
+# Spring Properties
+spring:
+  application:
+    name: subscription-service
+  profiles:
+    active: docker
+  main:
+    banner-mode: "off"
+  cloud:
+    config:
+      enabled: false
+
+
+# Pom Version
+app:
+  version: '@pom.version@'
+
+# Server Properties
+server:
+  port: ${PORT:0} # Random Port
+  servlet:
+    context-path: /suite/subscription-service/v0
+

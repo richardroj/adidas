@@ -1,0 +1,42 @@
+server:
+  port: 9080
+
+public-service: lb://public-service
+subscriptor-service: lb://subscriptor-service
+
+eureka:
+  instance:
+    preferIpAddress: true
+
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: docker
+  security:
+    user: 
+      name: adidas
+      password: adidas1234
+  cloud:
+    config:
+      enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true
+    urls:
+      - name: public-service
+        url: /suite/public-service/v0/v3/api-docs
+      - name: subscriptor-service
+        url: /suite/subscriptor-service/v0/v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

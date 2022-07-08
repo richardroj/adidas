@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: naming-server
+  profiles:
+    active: docker
+  cloud:
+    config:
+      enabled: false
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    maxThreadsForPeerReplication: 0
+
+server:
+  port: 9061

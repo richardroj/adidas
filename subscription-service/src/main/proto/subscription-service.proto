@@ -1,0 +1,39 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.service";
+
+message SubscriptionIdRequest{
+  string id = 1;
+}
+
+message SubscriptionRequest{
+  string name = 2;
+  string email = 3;
+  string gender = 4;
+  string birthDate = 5;
+  string newsletter = 6;
+  string consent = 7;
+}
+
+message SubscriptionResponse {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string gender = 4;
+  string birthDate = 5;
+  string newsletter = 6;
+  string consent = 7;
+}
+
+message SubscriptionsResponseList {
+    repeated SubscriptionResponse items = 1;
+}
+
+service SubscriptionService {
+  rpc getSubscription(SubscriptionIdRequest) returns (SubscriptionResponse) {};
+  rpc saveSubscription(SubscriptionRequest) returns (SubscriptionResponse) {};
+  rpc cancelSubscription(SubscriptionIdRequest) returns (SubscriptionResponse) {};
+  rpc listSubscriptions(google.protobuf.Empty) returns (SubscriptionsResponseList) {};
+}

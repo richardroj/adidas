@@ -1,0 +1,22 @@
+# Spring Properties
+spring:
+  application:
+    name: public-service
+  profiles:
+    active: docker
+  main:
+    banner-mode: "off"
+  cloud:
+    config:
+      enabled: false
+
+# Pom Version
+app:
+  version: '@pom.version@'
+
+# Server Properties
+server:
+  port: ${PORT:0} # Random Port
+  servlet:
+    context-path: /suite/public-service/v0
+

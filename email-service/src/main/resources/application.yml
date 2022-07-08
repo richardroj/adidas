@@ -1,0 +1,24 @@
+# Spring Properties
+spring:
+  application:
+    name: email-service
+  profiles:
+    active: docker
+  main:
+    banner-mode: "off"
+  cloud:
+    config:
+      enabled: false
+
+
+# Pom Version
+app:
+  version: '@pom.version@'
+
+# Server Properties
+server:
+  port: 9380 # Random Port
+  servlet:
+    context-path: /suite/email-service/v0
+
+

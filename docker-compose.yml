@@ -1,0 +1,50 @@
+version: "2.4"
+services:
+  public-service:
+    build: ./public-service
+    ports:
+      - 9280:9280
+    depends_on:
+      - naming-server
+      - subscription-service
+
+  # Gateway
+  api-gateway:
+    build: ./api-gateway
+    depends_on:
+      - naming-server
+    ports:
+      - 9080:9080
+
+  # Mysql
+  adidas-db:
+    build: ./mysql
+    #platform: linux/x86_64
+    volumes:
+      - data-volume:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Adidas447.
+      - MYSQL_DATABASE=adidas
+    ports:
+      - 3306:3306
+
+  # Eureka Server
+  naming-server:
+    build: ./naming-server
+    ports:
+      - 9061:9061
+
+  subscription-service:
+    build: ./subscription-service
+    depends_on:
+      - naming-server
+      - adidas-db
+    ports:
+      - 9090:9090
+
+  email-service:
+    build: ./email-service
+    depends_on:
+      - naming-server
+volumes:
+  data-volume:
