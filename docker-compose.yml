@@ -25,6 +25,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=Adidas447.
       - MYSQL_DATABASE=adidas
+      - MYSQL_ROOT_HOST=%
     ports:
       - 3306:3306
 

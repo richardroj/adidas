@@ -24,7 +24,7 @@ eureka:
   instance:
     prefer-ip-address: true # Register the IP of the service rather than the server name
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: false # Pull down a local copy of the registry
     serviceUrl:
       defaultZone: ${EUREKA_SERVER:http://naming-server:9061/eureka}

@@ -19,7 +19,7 @@ public class PublicService {
 	
 	public SubscriptionDto getSubscriptionById(Long id) {
 		
-		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("subscription-service", 9090)
                 .usePlaintext()
                 .build();
 		
